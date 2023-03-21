@@ -1,5 +1,5 @@
 
-# Simple Heroku Drain
+# Basic Heroku Log Drain
 
 ## Environment Variables
 
