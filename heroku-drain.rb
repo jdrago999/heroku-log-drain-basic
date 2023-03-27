@@ -10,6 +10,7 @@ gemfile do
 end
 
 set :port, ENV.fetch('PORT', 4567)
+set :bind, '0.0.0.0'
 http_username, http_password = ENV.fetch('USER'), ENV.fetch('PASS')
 
 aws = Aws::CloudWatchLogs::Client.new
