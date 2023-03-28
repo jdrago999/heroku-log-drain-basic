@@ -28,6 +28,13 @@ post '/(**log_group)/(**log_stream_name)' do
     timestamp: DateTime.rfc3339(time).to_time.to_i * 1000,
     message: message
   }
+
+  warn "/////////////// LOGGING THIS: %s" % {
+    log_group_name: params['log_group'],
+    log_stream_name: params['log_stream_name'],
+    log_events: [log_event]
+  }.to_json
+
   aws.put_log_events(
     log_group_name: params['log_group'],
     log_stream_name: params['log_stream_name'],
