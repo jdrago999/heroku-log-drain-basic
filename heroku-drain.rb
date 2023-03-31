@@ -33,7 +33,8 @@ post '/(**log_group)/(**log_stream_name)' do
   warn "/////////////// LOGGING THIS: %s" % {
     log_group_name: params['log_group'],
     log_stream_name: params['log_stream_name'],
-    log_events: [log_event]
+    log_events: [log_event],
+    raw_message: raw_message
   }.to_json
 
   aws.put_log_events(
