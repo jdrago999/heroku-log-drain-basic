@@ -51,3 +51,25 @@ curl \
   localhost:7890/BEACON_METRIC_LOGS/STAGING \
   -d '89 <45>1 2023-03-18T00:01:28.723822+00:00 host heroku web.1 - State changed from down to up'
 ```
+
+
+
+curl \
+  --verbose \
+  -X POST \
+  -u 'admin:AKIA2B4KATWSQ72TYBU5@' \
+  https://cloudwatch-log-drain.herokuapp.com/STG_BEACON_METRIC_LOGS/L16 \
+  -d '89 <45>1 2023-03-18T00:01:28.723822+00:00 host heroku web.1 - State changed from down to up'
+
+## Publishing this code to heroku:
+
+```bash
+git push heroku main
+```
+
+## Deploying this to an app on Heroku as a log drain:
+
+```bash
+heroku drains:add https://username:password@cloudwatch-log-drain.herokuapp.com/STG_BEACON_METRIC_LOGS/L16 -a l16-staging
+```
+
