@@ -43,14 +43,35 @@ The `foreman` command will read `Procfile` and run whatever is specified there, 
 
 3. Make a request to the log drain:
 
+##### Batched log entry request:
+
 ```bash
 curl \
   --verbose \
   -X POST \
-  -u 'admin:s3cr3tpa55' \
-  localhost:7890/BEACON_METRIC_LOGS/STAGING \
-  -d '89 <45>1 2023-03-18T00:01:28.723822+00:00 host heroku web.1 - State changed from down to up'
+  -u 'admin:password' \
+  localhost:7890/STG_BEACON_METRIC_LOGS/L16 \
+  -d "89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp
+89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from down to upppppppppp"
 ```
+
+##### Single log entry request:
+
+```bash
+curl \
+  --verbose \
+  -X POST \
+  -u 'admin:password' \
+  localhost:7890/STG_BEACON_METRIC_LOGS/L16 \
+  -d "89 <45>1 2023-04-10T17:12:02.000-07:00 host heroku web.1 - State changed from up to DOWWWWWWWN"
+```
+
 
 ## Publishing this code to heroku:
 
